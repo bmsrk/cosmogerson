@@ -11,23 +11,7 @@ interface Post {
 const Contos: React.FC = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  const posts: Post[] = [
-    { 
-      title: 'A_Ultima_Transmissao.md', 
-      date: '22.04.98',
-      content: '# A Última Transmissão\n\n**O silêncio** tomou conta da rede no Grajaú. \n\n* Conexão: Down\n* Localização: [Setor 7](https://example.com/map)'
-    },
-    { 
-      title: 'Vendedor_de_Solsticios.md', 
-      date: '15.01.99',
-      content: '# O Vendedor de Solstícios\n\nTião vendia _momentos_ pirateados de **1984** em favelas verticais.'
-    },
-    { 
-      title: 'O_Silencio_Digital.md', 
-      date: '03.02.99',
-      content: '# O Silêncio Digital\n\nSer ninguém é o maior ato de resistência.\n\n* Sem rastros\n* Sem volta'
-    },
-  ];
+  const posts: Post[] = [];
 
   return (
     <div className="space-y-6">
