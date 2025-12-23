@@ -48,18 +48,6 @@ const Home: React.FC = () => {
       title: 'Capítulo 1 — O Jeito', 
       content: '**USP, Departamento de Física — 2032**\n\nEm um solitário laboratório do departamento de Física da USP, **Gerson** fumava seu cigarro tranquilamente. Não porque ele podia, mas porque ele não se importava. Ninguém se importava muito com a USP em 2032.\n\nOs olhos cansados por trás dos óculos de armação grossa indicavam que Gerson estava há dias sem dormir. As pequenas letras do terminal piscavam e se embaralhavam na sua frente, enquanto ele bebericava um café frio e dava mais um trago.\n\nUm apito no terminal indicou que o cálculo havia terminado. Gerson arqueou as sobrancelhas e olhou espantado. As letrinhas miúdas voltaram ao foco.\n\n**Havia funcionado?**\n\nO resultado de anos de trabalho em um moquifo sustentado por duas corporações que só queriam usar o terreno para instalar seus data centers?  \nEra possível?\n\nUma gota de suor escorreu do rosto de Gerson, agora pálido.\n\n> Eu preciso contar isso pra alguém. Eu dei um jeito, finalmente!\n\nGerson levantou animado. Pegou o telefone e enviou uma mensagem para sua coordenadora de pesquisa. Gerson não sabia, mas essa mensagem mudaria o rumo da humanidade para sempre.'
     },
-    { 
-      title: 'A Última Transmissão', 
-      content: 'O {y:silêncio} tomou conta da rede no Grajaú. O {b:Setor 7} parou de responder após as 03h00 da manhã. Não houve aviso, apenas o chiado característico de hardware oxidado tentando processar o infinito.\n\nFomos ensinados que a rede era eterna, mas aqui, no fim da linha, descobrimos que ela é feita de cabos de cobre roubados e esperança pirateada. O sinal oscila como a chama de uma vela em um túnel de metrô abandonado, carregando fragmentos de uma realidade que já não nos pertence mais. Para quem escuta, a estática é um dialeto que sussurra segredos proibidos pelo firewall do centro.\n\n* Interferência detectada em nível de núcleo\n* Protocolo: 0-X acionado preventivamente\n* Frequência: 104.5 MHz (Sinal Residual)'
-    },
-    { 
-      title: 'O Vendedor de Solstícios', 
-      content: 'Tião vendia _momentos_ pirateados em pen-drives enferrujados na porta da estação. Ele dizia que o sol de 2024 era mais quente, mais real, menos processado por filtros de realidade aumentada das corporações. Em sua barraca improvisada, o tempo não era uma constante física, mas uma mercadoria de luxo acessível apenas para quem sabia o aperto de mão correto.\n\n> "O sol aqui é digital, mas o calor... o calor a gente ainda sente na pele quando a bateria esquenta. É o único lembrete de que ainda estamos biológicos em meio ao silício."\n\nNinguém sabia de onde vinham os pacotes de dados, mas todos pagavam o preço em silêncio absoluto, temendo que a luz se apagasse antes do próximo download de memória terminar. A sede por nostalgia era maior que o medo da vigilância onipresente.'
-    },
-    { 
-      title: 'O Silêncio Digital', 
-      content: 'Ser ninguém é o maior ato de resistência. Em um mundo onde cada pulso elétrico é catalogado e cada respiração gera um log em um servidor remoto, o {g:vazio} é a única propriedade privada que nos resta de fato. A invisibilidade não é um erro do sistema, mas uma escolha deliberada de quem aprendeu a ler entre as linhas de comando do próprio destino.\n\nApagamos os logs. Queimamos as pontes de fibra óptica. Agora somos apenas fantasmas no shell, operando em baixa frequência, esperando o próximo reboot do sistema operacional do mundo. Não há glória no anonimato, apenas a paz profunda de saber que, no fim das contas, ninguém está assistindo.\n\n* Sem logs de acesso detectáveis\n* Sem rastros deixados na nuvem\n* Sem caminho de volta para a superfície iluminada'
-    },
   ];
 
   return (
