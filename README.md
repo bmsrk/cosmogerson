@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🌌 COSMO GERSON
 
-# Run and deploy your AI Studio app
+**cosmogerson** é um zine digital sobre a tomada do espaço pelo Brasil e seus amigos latinoamericanos.
 
-This contains everything you need to run your app locally.
+Uma publicação sci-fi com estética retro-futurista, explorando tecnologia, autonomia e perspectivas latino-americanas sobre o futuro.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1kLmxXey-q78Mj4R2FOAw0q_jUZ4aq_x7
+## 🚀 Características
 
-## Run Locally
+- Site estático gerado com React + TypeScript + Vite
+- Estética terminal retro-futurista
+- Parser customizado de Markdown para leitura imersiva
+- Deploy automatizado via GitHub Actions
 
-**Prerequisites:**  Node.js
+## 📁 Estrutura
 
+```
+cosmogerson/
+├── components/     # Componentes React reutilizáveis
+├── pages/          # Páginas da aplicação
+├── generated/      # Adicione seus arquivos .md aqui
+└── ...
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 💻 Desenvolvimento Local
+
+**Pré-requisitos:** Node.js 20+
+
+```bash
+# Instalar dependências
+npm install
+
+# Executar em desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
+# Preview do build
+npm run preview
+```
+
+## ✍️ Adicionando Conteúdo
+
+1. Adicione arquivos `.md` na pasta `generated/`
+2. Commit e push para `main`
+3. GitHub Actions automaticamente faz deploy para GitHub Pages
+
+## 🌐 Deploy
+
+O site é automaticamente deployado para GitHub Pages em cada push para `main`.
+
+URL: https://bmsrk.github.io/cosmogerson/
+
+## 📜 Licença
+
+Este projeto é experimental e educacional.
