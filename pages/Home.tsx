@@ -45,6 +45,10 @@ const AsciiArtHeader: React.FC = () => (
 const Home: React.FC = () => {
   const entries: Entry[] = [
     { 
+      title: 'Capítulo 1 — O Jeito', 
+      content: '**USP, Departamento de Física — 2032**\n\nEm um solitário laboratório do departamento de Física da USP, **Gerson** fumava seu cigarro tranquilamente. Não porque ele podia, mas porque ele não se importava. Ninguém se importava muito com a USP em 2032.\n\nOs olhos cansados por trás dos óculos de armação grossa indicavam que Gerson estava há dias sem dormir. As pequenas letras do terminal piscavam e se embaralhavam na sua frente, enquanto ele bebericava um café frio e dava mais um trago.\n\nUm apito no terminal indicou que o cálculo havia terminado. Gerson arqueou as sobrancelhas e olhou espantado. As letrinhas miúdas voltaram ao foco.\n\n**Havia funcionado?**\n\nO resultado de anos de trabalho em um moquifo sustentado por duas corporações que só queriam usar o terreno para instalar seus data centers?  \nEra possível?\n\nUma gota de suor escorreu do rosto de Gerson, agora pálido.\n\n> Eu preciso contar isso pra alguém. Eu dei um jeito, finalmente!\n\nGerson levantou animado. Pegou o telefone e enviou uma mensagem para sua coordenadora de pesquisa. Gerson não sabia, mas essa mensagem mudaria o rumo da humanidade para sempre.'
+    },
+    { 
       title: 'A Última Transmissão', 
       content: 'O {y:silêncio} tomou conta da rede no Grajaú. O {b:Setor 7} parou de responder após as 03h00 da manhã. Não houve aviso, apenas o chiado característico de hardware oxidado tentando processar o infinito.\n\nFomos ensinados que a rede era eterna, mas aqui, no fim da linha, descobrimos que ela é feita de cabos de cobre roubados e esperança pirateada. O sinal oscila como a chama de uma vela em um túnel de metrô abandonado, carregando fragmentos de uma realidade que já não nos pertence mais. Para quem escuta, a estática é um dialeto que sussurra segredos proibidos pelo firewall do centro.\n\n* Interferência detectada em nível de núcleo\n* Protocolo: 0-X acionado preventivamente\n* Frequência: 104.5 MHz (Sinal Residual)'
     },
