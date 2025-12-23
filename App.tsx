@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Page } from './types';
 import Home from './pages/Home';
+import Manifesto from './pages/Manifesto';
+import Cenarios from './pages/Cenarios';
+import Contos from './pages/Contos';
+import GeneratorSource from './pages/GeneratorSource';
 import Header from './components/Header';
 
 /**
@@ -32,12 +37,67 @@ export const parseMarkdown = (md: string): string => {
 };
 
 const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<Page>(Page.INICIO);
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case Page.INICIO:
+        return <Home />;
+      case Page.MANIFESTO:
+        return <Manifesto />;
+      case Page.CENARIOS:
+        return <Cenarios />;
+      case Page.CONTOS:
+        return <Contos />;
+      case Page.SOURCE:
+        return <GeneratorSource />;
+      default:
+        return <Home />;
+    }
+  };
+
+  const navItems = [
+    { page: Page.INICIO, label: 'INICIO' },
+    { page: Page.MANIFESTO, label: 'MANIFESTO' },
+    { page: Page.CENARIOS, label: 'CENÁRIOS' },
+    { page: Page.CONTOS, label: 'CONTOS' },
+    { page: Page.SOURCE, label: 'SOURCE' },
+  ];
+
   return (
     <div className="min-h-screen bg-[#050505] flex flex-col selection:bg-emerald-500/30 selection:text-white antialiased">
       <Header />
-      <main className="flex-grow container mx-auto px-8 max-w-3xl py-40">
-        <Home />
+      
+      {/* Terminal-style Navigation */}
+      <nav className="border-b border-zinc-900/50 px-8 pt-24 pb-4">
+        <div className="container mx-auto max-w-3xl">
+          <div className="flex items-center gap-1 font-mono text-[10px] flex-wrap">
+            <span className="text-zinc-700 mr-2">~/</span>
+            {navItems.map((item, index) => (
+              <React.Fragment key={item.page}>
+                <button
+                  onClick={() => setCurrentPage(item.page)}
+                  className={`px-3 py-1.5 transition-all rounded-sm uppercase tracking-wider ${
+                    currentPage === item.page
+                      ? 'neon-green border border-emerald-500/30 bg-emerald-500/5'
+                      : 'text-zinc-600 hover:text-zinc-400 hover:bg-zinc-900/30'
+                  }`}
+                >
+                  {item.label}
+                </button>
+                {index < navItems.length - 1 && (
+                  <span className="text-zinc-800 mx-1">/</span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex-grow container mx-auto px-8 max-w-3xl py-20">
+        {renderPage()}
       </main>
+      
       <footer className="py-20 text-center border-t border-zinc-900/20">
         <div className="max-w-xs mx-auto mb-8 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
         <p className="text-[10px] text-zinc-800 tracking-[1em] uppercase font-mono">
