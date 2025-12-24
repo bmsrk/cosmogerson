@@ -55,12 +55,17 @@ async function build() {
   // Read all markdown files and concatenate content
   let allContent = '';
   
-  for (const file of files) {
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
     const md = await fs.readFile(path.join(inputDir, file), 'utf8');
     const content = parseMarkdown(md);
     
-    // Add spacing between chapters
-    allContent += content + '\n\n<div class="my-32 border-t border-zinc-800/30"></div>\n\n';
+    allContent += content;
+    
+    // Add spacing between chapters (but not after the last one)
+    if (i < files.length - 1) {
+      allContent += '\n\n<div class="my-32 border-t border-zinc-800/30"></div>\n\n';
+    }
   }
 
   // Generate single continuous book page
