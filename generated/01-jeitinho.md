@@ -1,4 +1,4 @@
-# Capítulo 1 — O Jeito
+# Prólogo — O Jeitinho
 
 **USP, Departamento de Física — 2032**
 
@@ -18,3 +18,6 @@ Uma gota de suor escorreu do rosto de Gerson, agora pálido.
 > Eu preciso contar isso pra alguém. Eu dei um jeito, finalmente!
 
 Gerson levantou animado. Pegou o telefone e enviou uma mensagem para sua coordenadora de pesquisa. Gerson não sabia, mas essa mensagem mudaria o rumo da humanidade para sempre.
+
+## MARTA, DEU CERTO. EU DEI UM JEITINHO AQUI.
+## É ISSO, TEMOS ENERGIA LIMPA RENOVÁVEL. QUE COISA.

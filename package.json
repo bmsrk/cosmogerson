@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "generate-pages": "node scripts/build.cjs",
+    "preview-build": "npx serve build",
+    "generate-and-preview": "npm run generate-pages && npx serve build",
     "preview": "vite preview"
   },
   "dependencies": {

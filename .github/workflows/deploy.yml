@@ -30,13 +30,32 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Build
-        run: npm run build
-      
+      - name: Generate static pages
+        run: npm run generate-pages
+
+      - name: Build SPA (optional)
+        run: npm run build || true
+
+      - name: Prepare pages artifact
+        run: |
+          set -e
+          rm -rf artifact || true
+          mkdir -p artifact
+          if [ -d "dist" ]; then
+            echo "Using dist for deployment"
+            cp -r dist/* artifact/
+          elif [ -d "build" ]; then
+            echo "Using build for deployment"
+            cp -r build/* artifact/
+          else
+            echo "No dist or build directory found" >&2
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./artifact
   
   deploy:
     needs: build
