@@ -69,7 +69,7 @@ const Home: React.FC = () => {
         
         <div className="mt-16 flex flex-col items-center gap-6 opacity-30">
           <div className="h-20 w-px bg-gradient-to-b from-transparent via-emerald-500 to-transparent"></div>
-          <span className="text-[10px] font-mono tracking-[0.8em] uppercase flicker-3">Volume_I // Fanzine_Digital</span>
+          <span className="text-[10px] font-mono tracking-[0.8em] uppercase flicker-3">escrito por bmsrk</span>
         </div>
       </section>
 
