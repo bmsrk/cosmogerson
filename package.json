@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:css": "tailwindcss -i ./src/styles/globals.css -o ./build/styles.css --minify",
     "generate-pages": "node scripts/build.cjs",
     "preview-build": "npx serve build",
     "generate-and-preview": "npm run generate-pages && npx serve build",
