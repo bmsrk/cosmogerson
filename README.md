@@ -48,6 +48,14 @@ npm run preview-build
 # Abre em http://localhost:3000
 ```
 
+### Recomendações rápidas para escrita
+
+- Edite/adicione capítulos em `generated/` seguindo o prefixo numérico (ex.: `03-seu-capitulo.md`).
+- Rode `npm run generate-pages` sempre que quiser atualizar o `build/` local.
+- Para evitar rodar o servidor de desenvolvimento por engano, use apenas `npm run preview-build` para inspecionar o resultado estático.
+
+Com isso você pode focar em escrever; o processo de build gera a versão estática pronta para revisão e deploy.
+
 ## ✍️ Adicionando Novos Capítulos
 
 1. Crie um arquivo `.md` na pasta `generated/` com prefixo numérico:
@@ -89,6 +97,21 @@ npm run preview-build
 ## 🌐 Deploy
 
 O site é automaticamente deployado para GitHub Pages em cada push para `main`.
+
+## 🛠️ Production Checklist
+
+- Use `npm run build:all` to clean and generate the static `build/` directory.
+- Preview the generated output with `npm run preview-build` (serves `build/`).
+- CI/CD: pushes to `main` already trigger the GitHub Actions workflow to build and deploy the `build/` folder to GitHub Pages.
+- To remove accidental dev-server usage, the `dev` script prints a guidance message; don't run it for static builds.
+
+If you want, I can add a lightweight watcher that auto-runs `npm run generate-pages` when files in `generated/` change, or strip leftover unused packages from `package.json`.
+
+## ✅ Repo Cleanup
+
+- Removed unused runtime markdown libraries from the codebase so the project stays lean.
+- Pruned extraneous packages from `node_modules` and verified `npm run build:all` completes successfully.
+- If you want, I can also remove the generated `build/` directory from the repo or add it to `.gitignore` (it's already ignored normally).
 
 **URL:** https://bmsrk.github.io/cosmogerson/
 

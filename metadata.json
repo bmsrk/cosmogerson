@@ -1,5 +1,19 @@
 {
   "name": "Cosmo Gerson - SSG Sci-Fi Latino",
   "description": "Um gerador de sites estáticos (SSG) minimalista focado em performance e estética Sci-Fi Latino, desenvolvido com Bun.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
   "requestFramePermissions": []
 }
