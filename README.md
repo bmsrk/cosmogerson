@@ -113,6 +113,14 @@ If you want, I can add a lightweight watcher that auto-runs `npm run generate-pa
 - Pruned extraneous packages from `node_modules` and verified `npm run build:all` completes successfully.
 - If you want, I can also remove the generated `build/` directory from the repo or add it to `.gitignore` (it's already ignored normally).
 
+### Deleted files
+
+- `pages/GeneratorSource.tsx` — developer-facing source preview not used by the app or static builder.
+- `components/Footer.tsx` — footer component was not imported anywhere.
+- `types.ts` — contained an unused `Page` enum.
+
+These deletions are committed to the local repo in case you'd like to review or push them.
+
 **URL:** https://bmsrk.github.io/cosmogerson/
 
 ## 📖 Documentação Completa
