@@ -224,6 +224,18 @@ async function build() {
     console.log('✓ Written:', chapter.filename);
   }
 
+  // Generate flickering text HTML (character-by-character animation like Home.tsx)
+  function generateFlickeringText(text, offset = 0) {
+    return text.split('').map((char, i) => {
+      if (char === ' ') return '&nbsp;';
+      const totalIndex = i + offset;
+      const flickerIndex = (totalIndex * 17 + 11) % 5 + 1;
+      const colors = ['neon-green', 'neon-yellow', 'neon-blue'];
+      const colorClass = colors[totalIndex % 3];
+      return `<span class="flicker-${flickerIndex} ${colorClass}">${char}</span>`;
+    }).join('');
+  }
+
   // Generate index page
   const indexHtml = `<!doctype html>
 <html lang="pt-BR">
@@ -237,58 +249,72 @@ async function build() {
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Major+Mono+Display&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-[#050505] fanzine-pattern">
-  <div class="container mx-auto px-6 md:px-8 max-w-4xl py-12 md:py-20">
-    <!-- Header -->
-    <header class="text-center mb-16 md:mb-24">
-      <h1 class="text-5xl md:text-7xl font-logo neon-green mb-6 tracking-tighter flicker-1">
-        COSMOGERSON
-      </h1>
-      <p class="text-lg md:text-xl text-zinc-500 font-mono uppercase tracking-[0.3em]">
-        Sci-Fi Latino Americano
-      </p>
-      <div class="mt-8 flex items-center justify-center gap-4 text-sm text-zinc-600">
-        <span class="inline-block w-12 h-px bg-gradient-to-r from-transparent via-neon-green to-transparent"></span>
-        <span class="uppercase tracking-wider">E-book de Contos</span>
-        <span class="inline-block w-12 h-px bg-gradient-to-r from-transparent via-neon-green to-transparent"></span>
-      </div>
-    </header>
-
-    <!-- Table of Contents -->
-    <div class="max-w-2xl mx-auto">
-      <h2 class="text-2xl md:text-3xl neon-green font-mono mb-10 uppercase tracking-wider text-center">
-        <span class="inline-block border-b-2 border-neon-green/30 pb-2">Índice</span>
-      </h2>
+  <div class="container mx-auto px-6 md:px-8 max-w-3xl py-40 space-y-48 pb-40">
+    
+    <!-- Front Matter (matching Home.tsx) -->
+    <section class="text-center py-24 relative overflow-visible">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-80 bg-emerald-500/[0.04] blur-[160px] rounded-full pointer-events-none"></div>
       
-      <nav class="space-y-4">
-        ${chapters.map((ch, idx) => `
-        <a href="${ch.filename}" class="group block p-6 md:p-8 border border-zinc-800/50 hover:border-neon-green transition-all duration-300 hover:shadow-lg hover:shadow-neon-green/5">
-          <div class="flex items-start gap-6">
-            <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center border border-zinc-800 group-hover:border-neon-green transition-colors">
-              <span class="text-xl font-mono text-zinc-600 group-hover:text-neon-green transition-colors">${String(idx + 1).padStart(2, '0')}</span>
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-xl md:text-2xl font-mono text-zinc-400 group-hover:text-neon-green transition-colors mb-2 leading-tight">
-                ${ch.title}
-              </h3>
-              <div class="flex items-center gap-2 text-xs text-zinc-700 uppercase tracking-wider">
-                <span>Capítulo ${idx + 1}</span>
-                <span class="opacity-50">•</span>
-                <span class="group-hover:text-neon-green transition-colors">Ler agora →</span>
-              </div>
-            </div>
-          </div>
-        </a>
-        `).join('\n        ')}
-      </nav>
-    </div>
-
-    <!-- Footer -->
-    <footer class="mt-20 md:mt-32 text-center text-sm text-zinc-700">
-      <div class="inline-block border-t border-zinc-800/50 pt-8 px-12">
-        <p class="font-mono uppercase tracking-wider mb-2">COSMOGERSON</p>
-        <p class="text-xs text-zinc-800">Uma publicação sci-fi retro-futurista</p>
+      <!-- ASCII Art Header -->
+      <div class="mb-12 opacity-5 select-none pointer-events-none flex flex-col items-center gap-2">
+        <pre class="text-[6px] md:text-[8px] leading-[1] font-mono text-zinc-500 flicker-4">   _     _     _     _     _   
+  ( )   ( )   ( )   ( )   ( )  
+   X     X     X     X     X   
+  (_)   (_)   (_)   (_)   (_)  </pre>
+        <pre class="text-[5px] md:text-[6px] leading-[1] font-mono text-zinc-600 flicker-2">&lt;&lt;&lt; SIGNAL_STABLE_42 &gt;&gt;&gt;</pre>
       </div>
-    </footer>
+      
+      <!-- Large Flickering Title -->
+      <h1 class="relative z-10 text-6xl md:text-9xl font-logo select-none tracking-tighter flex flex-col items-center leading-[0.8]">
+        <span class="drop-shadow-[0_0_40px_rgba(0,255,102,0.18)]">
+          ${generateFlickeringText('COSMO')}
+        </span>
+        <span class="mt-4 drop-shadow-[0_0_40px_rgba(0,153,255,0.18)]">
+          ${generateFlickeringText('GERSON', 5)}
+        </span>
+      </h1>
+      
+      <div class="mt-16 flex flex-col items-center gap-6 opacity-30">
+        <div class="h-20 w-px bg-gradient-to-b from-transparent via-emerald-500 to-transparent"></div>
+        <span class="text-[10px] font-mono tracking-[0.8em] uppercase flicker-3">Volume_I // Fanzine_Digital</span>
+      </div>
+    </section>
+
+    <!-- Narrative Entries (matching Home.tsx article style) -->
+    <section class="space-y-40">
+      ${chapters.map((ch, idx) => `
+      <article class="group relative bg-[#0a0a0a] p-12 md:p-24 rounded-sm border border-zinc-900/50 fanzine-pattern transition-all hover:border-zinc-800/80 shadow-2xl overflow-hidden">
+        <!-- Structural Markers -->
+        <div class="absolute top-4 left-4 text-[8px] font-mono text-zinc-800 tracking-widest opacity-40 select-none flicker-4">
+          COORD_${String(idx + 1).padStart(2, '0')} // TRACE_INIT
+        </div>
+        <div class="absolute bottom-4 right-4 text-[8px] font-mono text-zinc-800 tracking-widest opacity-40 select-none flicker-1">
+          SYSTEM_ID // 42_NULL
+        </div>
+
+        <!-- Entry Header -->
+        <header class="mb-24">
+          <div class="flex items-center gap-6 mb-8 opacity-20">
+            <span class="text-[10px] font-mono uppercase tracking-[0.5em] font-bold">FOLIO_${String(idx + 1).padStart(2, '0')}</span>
+            <div class="h-px flex-1 bg-gradient-to-r from-zinc-800 to-transparent"></div>
+          </div>
+          <h2 class="text-3xl md:text-5xl font-mono font-bold uppercase tracking-[0.1em] neon-green leading-[1.1] max-w-xl group-hover:neon-yellow transition-colors duration-700">
+            <a href="${ch.filename}" class="hover:opacity-80 transition-opacity">${ch.title}</a>
+          </h2>
+        </header>
+
+        <!-- Entry Preview/Link -->
+        <div class="font-mono text-zinc-400 selection:bg-emerald-900/40 relative z-10 max-w-2xl mx-auto">
+          <p class="mb-10 leading-[2.2] text-[16px] text-zinc-500 font-light tracking-normal">
+            <a href="${ch.filename}" class="text-zinc-600 hover:text-neon-green transition-colors uppercase tracking-wider text-sm">
+              → Ler capítulo ${idx + 1}
+            </a>
+          </p>
+        </div>
+      </article>
+      `).join('\n      ')}
+    </section>
+
   </div>
 </body>
 </html>`;
