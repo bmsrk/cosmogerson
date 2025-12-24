@@ -32,6 +32,18 @@ function getChapterNumber(filename) {
   return match ? parseInt(match[1], 10) : 999;
 }
 
+// Generate flickering text HTML (character-by-character animation like Home.tsx)
+function generateFlickeringText(text, offset = 0) {
+  return text.split('').map((char, i) => {
+    if (char === ' ') return '&nbsp;';
+    const totalIndex = i + offset;
+    const flickerIndex = (totalIndex * 17 + 11) % 5 + 1;
+    const colors = ['neon-green', 'neon-yellow', 'neon-blue'];
+    const colorClass = colors[totalIndex % 3];
+    return `<span class="flicker-${flickerIndex} ${colorClass}">${char}</span>`;
+  }).join('');
+}
+
 async function build() {
   const root = path.join(__dirname, '..');
   const inputDir = path.join(root, 'generated');
@@ -81,13 +93,47 @@ async function build() {
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Major+Mono+Display&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <meta name="generator" content="scripts/build.cjs">
 </head>
-<body class="min-h-screen bg-[#050505] relative">
+<body class="min-h-screen bg-[#050505] fanzine-pattern">
   <!-- Reading Progress Bar -->
   <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-neon-green via-neon-yellow to-neon-blue transition-all duration-150 z-50" style="width: 0%"></div>
   
-  <main class="container mx-auto px-6 md:px-8 max-w-3xl py-16 md:py-24">
-    ${allContent}
-  </main>
+  <div class="container mx-auto px-6 md:px-8 max-w-3xl py-40 space-y-48 pb-40">
+    
+    <!-- Front Matter -->
+    <section class="text-center py-24 relative overflow-visible">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-80 bg-emerald-500/[0.04] blur-[160px] rounded-full pointer-events-none"></div>
+      
+      <!-- ASCII Art Header -->
+      <div class="mb-12 opacity-5 select-none pointer-events-none flex flex-col items-center gap-2">
+        <pre class="text-[6px] md:text-[8px] leading-[1] font-mono text-zinc-500 flicker-4">   _     _     _     _     _   
+  ( )   ( )   ( )   ( )   ( )  
+   X     X     X     X     X   
+  (_)   (_)   (_)   (_)   (_)  </pre>
+        <pre class="text-[5px] md:text-[6px] leading-[1] font-mono text-zinc-600 flicker-2">&lt;&lt;&lt; SIGNAL_STABLE_42 &gt;&gt;&gt;</pre>
+      </div>
+      
+      <!-- Large Flickering Title -->
+      <h1 class="relative z-10 text-6xl md:text-9xl font-logo select-none tracking-tighter flex flex-col items-center leading-[0.8]">
+        <span class="drop-shadow-[0_0_40px_rgba(0,255,102,0.18)]">
+          ${generateFlickeringText('COSMO')}
+        </span>
+        <span class="mt-4 drop-shadow-[0_0_40px_rgba(0,153,255,0.18)]">
+          ${generateFlickeringText('GERSON', 5)}
+        </span>
+      </h1>
+      
+      <div class="mt-16 flex flex-col items-center gap-6 opacity-30">
+        <div class="h-20 w-px bg-gradient-to-b from-transparent via-emerald-500 to-transparent"></div>
+        <span class="text-[10px] font-mono tracking-[0.8em] uppercase flicker-3">Volume_I // Fanzine_Digital</span>
+      </div>
+    </section>
+
+    <!-- Narrative Content -->
+    <section class="space-y-40">
+      ${allContent}
+    </section>
+
+  </div>
 
   <script>
     // Reading progress bar
