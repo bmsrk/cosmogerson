@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'neon-green': '#00ff66',
-        'neon-yellow': '#ffcc00',
-        'neon-blue': '#0099ff',
+        'neon-green': '#00a34a',
+        'neon-yellow': '#FFCB00',
+        'neon-blue': '#3b63ff',
       },
       fontFamily: {
         'futuristic': ['Orbitron', 'sans-serif'],

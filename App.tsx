@@ -41,7 +41,7 @@ const App: React.FC = () => {
       <footer className="py-20 text-center border-t border-zinc-900/20">
         <div className="max-w-xs mx-auto mb-8 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
         <p className="text-[10px] text-zinc-800 tracking-[1em] uppercase font-mono">
-          DONT_PANIC // EDICAO_42
+          by bmsrk
         </p>
       </footer>
     </div>

@@ -4,19 +4,107 @@
 
 :root {
     --bg: #050505;
-    --primary: #00ff66;
-    --secondary: #ffcc00;
-    --accent: #0099ff;
-    --text: #a8b9ae;
+    --primary: #00a34a; /* Verde (tuned brighter) */
+    --secondary: #FFCB00; /* Amarelo */
+    --accent: #3b63ff; /* Azul (brighter for contrast) */
+    --white: #FFFFFF;
+    --text: #e4e4e4; /* Slightly brighter body text */
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
+    /* base/app body - themeable */
+    background-color: #050505;
+    color: var(--text); /* tuned text color */
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.6;
+    letter-spacing: 0.01em;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    position: relative;
 }
+
+/* Galaxy background (nebula + stars) - adapted from user sample and optimized */
+.galaxy {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, #0a1520 0%, #050810 50%, #000000 100%);
+  overflow: hidden;
+}
+
+.galaxy .nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.galaxy .cloud {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+
+.cloud1 { width: 600px; height: 600px; top: 5%; left: 15%; animation: float 28s infinite ease-in-out, colorShift1 18s infinite alternate; }
+.cloud2 { width: 550px; height: 550px; top: 40%; right: 10%; animation: float 35s infinite ease-in-out, colorShift2 22s infinite alternate; }
+.cloud3 { width: 450px; height: 450px; bottom: 15%; left: 35%; animation: float 25s infinite ease-in-out, colorShift3 20s infinite alternate; }
+.cloud4 { width: 500px; height: 500px; top: 60%; left: 5%; animation: float 32s infinite ease-in-out, colorShift4 19s infinite alternate; }
+.cloud5 { width: 400px; height: 400px; top: 20%; right: 25%; animation: float 30s infinite ease-in-out, colorShift5 23s infinite alternate; }
+.cloud6 { width: 350px; height: 350px; bottom: 30%; right: 30%; animation: float 27s infinite ease-in-out, colorShift6 21s infinite alternate; }
+.cloud7 { width: 380px; height: 380px; top: 35%; left: 50%; animation: float 26s infinite ease-in-out, colorShift7 17s infinite alternate; }
+.cloud8 { width: 420px; height: 420px; bottom: 40%; left: 10%; animation: float 33s infinite ease-in-out, colorShift8 21s infinite alternate; }
+
+@keyframes float { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(40px,-40px) scale(1.15);} 66%{transform:translate(-30px,30px) scale(0.9);} }
+
+@keyframes colorShift1 { 0%{background: radial-gradient(circle, rgba(0,163,74,0.5) 0%, rgba(0,120,45,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(59,95,255,0.45) 0%, rgba(40,30,200,0.28) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(255,203,0,0.45) 0%, rgba(200,180,0,0.28) 40%, transparent 70%);} }
+@keyframes colorShift2 { 0%{background: radial-gradient(circle, rgba(255,223,0,0.45) 0%, rgba(200,180,0,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(255,0,150,0.45) 0%, rgba(200,0,100,0.3) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(0,255,150,0.45) 0%, rgba(0,200,120,0.3) 40%, transparent 70%);} }
+@keyframes colorShift3 { 0%{background: radial-gradient(circle, rgba(0,39,118,0.45) 0%, rgba(0,30,90,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(255,100,0,0.45) 0%, rgba(200,80,0,0.3) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(0,156,59,0.45) 0%, rgba(0,120,45,0.3) 40%, transparent 70%);} }
+@keyframes colorShift4 { 0%{background: radial-gradient(circle, rgba(255,0,150,0.45) 0%, rgba(200,0,100,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(0,200,255,0.45) 0%, rgba(0,150,200,0.3) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(255,223,0,0.45) 0%, rgba(200,180,0,0.3) 40%, transparent 70%);} }
+@keyframes colorShift5 { 0%{background: radial-gradient(circle, rgba(138,43,226,0.4) 0%, rgba(100,20,180,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(0,156,59,0.4) 0%, rgba(0,120,45,0.3) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(255,0,150,0.4) 0%, rgba(200,0,100,0.3) 40%, transparent 70%);} }
+@keyframes colorShift6 { 0%{background: radial-gradient(circle, rgba(0,200,255,0.45) 0%, rgba(0,150,200,0.3) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(255,223,0,0.45) 0%, rgba(200,180,0,0.3) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(138,43,226,0.45) 0%, rgba(100,20,180,0.3) 40%, transparent 70%);} }
+@keyframes colorShift7 { 0%{background: radial-gradient(circle, rgba(255,100,0,0.4) 0%, rgba(200,80,0,0.2) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(0,39,118,0.4) 0%, rgba(0,30,90,0.2) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(0,255,150,0.4) 0%, rgba(0,200,120,0.2) 40%, transparent 70%);} }
+@keyframes colorShift8 { 0%{background: radial-gradient(circle, rgba(0,255,150,0.4) 0%, rgba(0,200,120,0.2) 40%, transparent 70%);} 50%{background: radial-gradient(circle, rgba(255,100,0,0.4) 0%, rgba(200,80,0,0.2) 40%, transparent 70%);} 100%{background: radial-gradient(circle, rgba(0,39,118,0.4) 0%, rgba(0,30,90,0.2) 40%, transparent 70%);} }
+
+/* Stars implemented as a CSS-only field using box-shadow for performance */
+.galaxy::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 1px;
+  z-index: 0;
+  pointer-events: none;
+  /* Multiple star points (vw/vh coordinates) */
+  box-shadow:
+    2vw 5vh rgba(255,255,255,0.9), 10vw 8vh rgba(255,255,255,0.85),
+    15vw 15vh rgba(255,255,255,0.8), 22vw 22vh rgba(255,255,255,0.7),
+    28vw 12vh rgba(255,255,255,0.9), 32vw 32vh rgba(255,255,255,0.75),
+    38vw 18vh rgba(255,255,255,0.85), 42vw 35vh rgba(255,255,255,0.6),
+    48vw 25vh rgba(255,255,255,0.9), 53vw 42vh rgba(255,255,255,0.7),
+    58vw 15vh rgba(255,255,255,0.8), 63vw 38vh rgba(255,255,255,0.65),
+    68vw 28vh rgba(255,255,255,0.9), 73vw 45vh rgba(255,255,255,0.6),
+    78vw 32vh rgba(255,255,255,0.8), 83vw 48vh rgba(255,255,255,0.6),
+    88vw 20vh rgba(255,255,255,0.9), 93vw 52vh rgba(255,255,255,0.5),
+    98vw 35vh rgba(255,255,255,0.75), 5vw 60vh rgba(255,255,255,0.6),
+    12vw 65vh rgba(255,255,255,0.8), 18vw 72vh rgba(255,255,255,0.5),
+    25vw 78vh rgba(255,255,255,0.75), 30vw 85vh rgba(255,255,255,0.5);
+  opacity: 0.95;
+  transform: translateZ(0);
+  animation: stars-twinkle 12s infinite linear;
+}
+
+@keyframes stars-twinkle {
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 0.72; }
+}
+
+/* keep content above */
+.container, .post-panel, header, section, footer { position: relative; z-index: 1; }
+ 
 
 .font-futuristic {
     font-family: 'Orbitron', sans-serif;
@@ -26,28 +114,47 @@ body {
     font-family: 'Major Mono Display', monospace;
 }
 
+/* Jersey 20 for post body text (pixel display) */
+.font-jersey {
+    font-family: 'Jersey 20', 'JetBrains Mono', monospace;
+    font-weight: 400;
+}
+
 .neon-green {
     color: var(--primary);
-    text-shadow: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.2);
+    text-shadow: 0 0 18px rgba(0, 163, 74, 1), 0 0 48px rgba(0, 163, 74, 0.6);
 }
 
 .neon-yellow {
     color: var(--secondary);
-    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    /* keep neon look but don't force pixel font globally so title can inherit its display font */
+    text-shadow: 0 0 16px rgba(255,203,0,0.98), 0 0 36px rgba(255,203,0,0.6);
+}
+
+/* Apply pixel font only inside post panels (posts should use pixel yellow accents) */
+.post-panel .neon-yellow {
+    font-family: 'Jersey 20', 'Source Code Pro', ui-monospace, system-ui;
+    font-weight: 400;
+    font-size: 1.18rem; /* increased pixel text */
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    -webkit-font-smoothing: none;
+    line-height: 1.15; /* slightly tighter */
+    text-shadow: 0 0 20px rgba(255,203,0,1), 0 0 56px rgba(255,203,0,0.85);
 }
 
 .neon-blue {
     color: var(--accent);
-    text-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+    text-shadow: 0 0 20px rgba(59,95,255,0.98), 0 0 48px rgba(59,95,255,0.6);
 }
 
 /* Abstract Digital Folio Pattern */
 .fanzine-pattern {
     background-color: #080808;
     background-image: 
-        linear-gradient(rgba(0, 255, 102, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 102, 0.015) 1px, transparent 1px),
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.01) 1px, transparent 0);
+        linear-gradient(rgba(0, 163, 74, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 163, 74, 0.025) 1px, transparent 1px),
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.012) 1px, transparent 0);
     background-size: 60px 60px, 60px 60px, 10px 10px;
     background-position: -1px -1px, -1px -1px, center;
 }
@@ -89,6 +196,36 @@ h1, h2, h3 {
     letter-spacing: 0.1em;
 }
 
+/* Subtle black backing and stroke only for the large neon title */
+.neon-title {
+  position: relative;
+  display: inline-block;
+}
+.neon-title::before {
+  /* soft, rounded dark pad to emphasize neon glows */
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  right: -1.25rem;
+  top: -0.6rem;
+  bottom: -0.6rem;
+  background: radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0.35) 50%, transparent 70%);
+  border-radius: 1rem;
+  filter: blur(10px);
+  z-index: -1; /* sits behind the text but above the page radial */
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* fine-grain stroke on each neon character to make the color pop */
+.neon-title span {
+  -webkit-text-stroke: 0.9px rgba(0,0,0,0.75);
+  text-stroke: 0.9px rgba(0,0,0,0.75);
+  line-height: 1;
+  display: inline-block;
+}
+
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb { background: #111; }
@@ -98,6 +235,200 @@ h1, h2, h3 {
 .mono {
     font-family: 'JetBrains Mono', monospace;
 }
+
+/* Post panel: mix between printed page and terminal aesthetic */
+.post-panel {
+    background: linear-gradient(180deg, rgba(0,163,74,0.02), rgba(255,255,255,0.006));
+    border: 1px solid rgba(0,163,74,0.06);
+    padding: 2.25rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 30px rgba(0,0,0,0.6);
+    background-image: repeating-linear-gradient(transparent 0 24px, rgba(255,255,255,0.006) 24px 25px);
+    backdrop-filter: blur(2px);
+    font-family: 'Georgia', 'Times New Roman', serif; /* readable body font */
+    font-size: 17px;
+    line-height: 1.85;
+    color: #e6e6e6;
+    max-width: 48rem;
+}
+
+.post-panel p {
+    color: #e6e6e6; /* slightly brighter inside panel */
+    font-family: 'Source Code Pro', monospace;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.85;
+    text-align: justify; /* justified layout for posts */
+    text-justify: inter-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+.post-panel h1, .post-panel h2, .post-panel h3 {
+    margin-top: 0.5rem;
+}
+
+/* Serif variant for posts (suggested): deep charcoal background, serif reading font */
+.post-panel.serif {
+    background-color: #121212; /* Deep charcoal */
+    color: #e0e0e0; /* Light gray for soft contrast */
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+}
+
+
+
+.post-panel.serif p {
+    color: #e0e0e0;
+    font-family: 'Georgia', serif;
+}
+
+/* Make sure the injected font-jersey fallback doesn't override the serif variant */
+.post-panel.serif .font-jersey { font-family: inherit; }
+
+/* Remove Coustard test utility to avoid accidental use */
+.post-panel.coustard { font-family: inherit; }
+
+/* Coustard test variant */
+.font-coustard {
+    font-family: 'Coustard', Georgia, serif;
+}
+.post-panel.coustard {
+    font-family: 'Coustard', Georgia, serif;
+    background-color: #121212; /* keep the panel shade */
+    color: #e9e9e9;
+}
+.post-panel.coustard p { font-family: inherit; }
+
+/* Markdown render helpers */
+.md-link {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: text-shadow 120ms ease, transform 120ms ease;
+}
+.md-link:hover {
+    text-shadow: 0 0 14px rgba(255,203,0,0.6);
+    transform: translateY(-1px);
+}
+
+.md-code-inline {
+    background: rgba(255,255,255,0.03);
+    padding: 0.12rem 0.32rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(255,255,255,0.03);
+    font-family: 'JetBrains Mono', 'Source Code Pro', monospace;
+    font-size: 0.95em;
+}
+
+.md-code-block {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.004));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    font-family: 'JetBrains Mono', 'Source Code Pro', monospace;
+    font-size: 0.95rem;
+    color: #e6eef2;
+}
+
+.post-panel ul { padding-left: 1rem; }
+.post-panel ul li::marker { color: var(--primary); }
+.post-panel ol li::marker { color: var(--secondary); }
+
+/* Subtle accent for images inside posts */
+.post-panel img { border-radius: 0.35rem; border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+
+/* Blue-tinted blockquote enhancements (bigger + bluer) */
+.post-panel blockquote {
+  border-left-color: rgba(59,95,255,0.72) !important; /* stronger blue */
+  border-left-width: 5px;
+  box-shadow: inset 12px 0 36px rgba(59,95,255,0.22);
+  background: linear-gradient(90deg, rgba(59,95,255,0.035), rgba(0,0,0,0.14));
+  padding-left: 1.25rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  font-size: 1.08rem; /* slightly larger quotes */
+  line-height: 1.32; /* slightly tighter */
+  transition: box-shadow 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+.post-panel blockquote::before {
+  content: '“';
+  position: absolute;
+  left: 0.3rem;
+  top: -0.8rem;
+  color: rgba(59,95,255,0.32);
+  font-size: 5.2rem; /* larger quote glyph */
+  font-family: 'Georgia', serif;
+  line-height: 1;
+  z-index: 0;
+  pointer-events: none;
+  text-shadow: 0 10px 48px rgba(59,95,255,0.36), 0 0 22px rgba(59,95,255,0.22);
+  transform: translateZ(0) scale(1.04);
+  opacity: 1;
+}
+.post-panel blockquote p { position: relative; z-index: 2; color: #e8f3ff; }
+.post-panel blockquote:hover {
+  box-shadow: inset 18px 0 52px rgba(59,95,255,0.32), 0 10px 48px rgba(59,95,255,0.08);
+  background: linear-gradient(90deg, rgba(59,95,255,0.06), rgba(0,0,0,0.18));
+  transform: translateY(-2px);
+} 
+
+/* Dialog-style blockquote variant (tighter + larger + bluer) */
+.post-panel blockquote.dialog {
+  border-left-color: rgba(59,95,255,0.68) !important;
+  background: linear-gradient(90deg, rgba(59,95,255,0.04), rgba(0,0,0,0.1));
+  padding: 0.9rem 1rem;
+  border-radius: 0.45rem;
+  line-height: 1.35;
+  font-size: 1rem;
+}
+.post-panel blockquote.dialog .dialog-speaker {
+  display: inline-block;
+  font-family: 'Coustard', Georgia, serif;
+  font-weight: 700;
+  color: rgba(59,95,255,1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.6rem;
+}
+.post-panel blockquote.dialog .dialog-text {
+  color: #eaf6ff;
+  font-family: 'Jersey 20', 'Source Code Pro', ui-monospace, system-ui;
+  font-size: 1.08rem; /* larger pixel text */
+  letter-spacing: 0.035em;
+  line-height: 1.26;
+}
+.post-panel blockquote.dialog strong, .post-panel blockquote.dialog em {
+  color: rgba(59,95,255,1);
+  text-shadow: 0 0 10px rgba(59,95,255,0.36);
+} 
+
+/* Apply pixel font to regular blockquote text inside posts */
+.post-panel blockquote, .post-panel blockquote p {
+  font-family: 'Jersey 20', 'Source Code Pro', ui-monospace, system-ui;
+  font-size: 1.04rem;
+  letter-spacing: 0.04em;
+  color: #dfe8ff;
+}
+
+/* Dialog quote marker: bold en-dash for dialog-style quotes */
+.post-panel blockquote.dialog::before {
+  content: '–'; /* en-dash */
+  position: absolute;
+  left: 0.5rem;
+  top: 0.56rem;
+  color: rgba(59,95,255,0.98);
+  font-size: 1.25rem;
+  font-family: 'Jersey 20', Georgia, serif;
+  font-weight: 700; /* bold */
+  line-height: 1;
+  z-index: 0;
+  pointer-events: none;
+  text-shadow: 0 6px 22px rgba(59,95,255,0.22), 0 0 6px rgba(0,0,0,0.35);
+}
+
 
 .accent {
     color: var(--primary);
@@ -115,6 +446,11 @@ h1, h2, h3 {
     color: var(--accent);
 }
 
+/* Utility for white text */
+.color-w {
+    color: var(--white);
+}
+
 .text-main {
     color: var(--text);
 }
@@ -124,11 +460,11 @@ h1, h2, h3 {
 }
 
 .glow-g {
-    text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+    text-shadow: 0 0 20px rgba(0, 148, 64, 0.6);
 }
 
 .glow-y {
-    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    text-shadow: 0 0 20px rgba(255, 203, 0, 0.6);
 }
 
 .terminal-block {
